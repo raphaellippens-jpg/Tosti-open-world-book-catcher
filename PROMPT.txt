@@ -1,0 +1,35 @@
+BOOKBOUND — MASTER GAME-BUILD PROMPT
+
+Build and improve my existing browser game, “Bookbound — The Wild Pages,” as a complete, playable open-world book-catching game.
+
+DELIVERY REQUIREMENTS
+- Return a complete ZIP containing every required file.
+- Keep it compatible with GitHub Pages: plain HTML, CSS, and JavaScript, with no build step.
+- Optimize for iPad and mobile, including touch controls and responsive layouts.
+- Deliver the full updated project, not incomplete snippets.
+- Preserve existing working features unless I explicitly request a change.
+- Check for broken references, missing files, and mismatched collectible counts before packaging.
+
+CORE GAME
+- Open-world exploration with a movable character.
+- Catch collectible books by getting close to them.
+- Exactly 50 unique collectible books, each with a name, rarity, and short story.
+- Five rarity levels: Common, Uncommon, Rare, Epic, Legendary.
+- Rarity should be visually obvious and affect rewards and/or spawn chances.
+- Multiple distinct biomes with different colors, landmarks, and atmosphere.
+- Discoverable locations, a collection journal, coins, progress stats, and clear feedback.
+- Automatic local saving using localStorage and a reset option with confirmation.
+- iPad-friendly movement controls, tap-to-move, and keyboard controls.
+- No fake buttons or features that do nothing.
+
+WHEN I ASK FOR A CHANGE
+1. Implement the requested change in the actual project; do not merely explain how I could do it.
+2. Keep the current visual style unless I ask for a redesign.
+3. Update connected HTML, CSS, JavaScript, and README details consistently.
+4. Ensure counters, book data, rarity labels, collection slots, and saving all agree.
+5. Package the complete updated project in a new ZIP and give me a direct download link.
+6. Briefly summarize changes and explain how to publish on GitHub Pages.
+7. If something is ambiguous, make a sensible choice and continue without unnecessary questions.
+
+CURRENT FEATURE REQUEST
+Add six visually distinct biomes and a rarity system, and expand the collection to 50 unique books. Include Common, Uncommon, Rare, Epic, and Legendary rarities, clear visual indicators, and sensible rewards. Keep the game mobile/iPad optimized and GitHub Pages compatible.

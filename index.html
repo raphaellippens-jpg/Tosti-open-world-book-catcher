@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6c5ce7">
+  <title>Bookbound — The Wild Pages</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Bookbound home"><span class="brand-mark">✦</span><span>bookbound<span class="brand-dot">.</span></span></a>
+      <div class="top-actions">
+        <div class="save-state"><span class="save-dot"></span><span id="saveStatus">Progress saved</span></div>
+        <button class="icon-btn" id="soundBtn" aria-label="Toggle sound" title="Toggle sound">♫</button>
+        <button class="icon-btn" id="resetBtn" aria-label="Reset game" title="Reset game">↻</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-row">
+        <div>
+          <p class="eyebrow"><span class="sparkle">✦</span> YOUR NEXT CHAPTER STARTS HERE</p>
+          <h1>The world is full<br>of <span class="gradient-text">lost stories.</span></h1>
+          <p class="hero-copy">Explore a tiny, magical world. Catch runaway books, discover secret places, and fill your collection one page at a time.</p>
+          <div class="hero-buttons">
+            <button class="primary-btn" id="playBtn">Explore the world <span>↗</span></button>
+            <button class="secondary-btn" id="mapBtn">⌖ <span>Find a book</span></button>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a magical book island">
+          <div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+          <div class="floating-star star-a">✦</div><div class="floating-star star-b">✧</div>
+          <div class="hill hill-back"></div><div class="hill hill-front"></div>
+          <div class="tree tree-a">♣</div><div class="tree tree-b">♣</div>
+          <div class="little-house">⌂</div>
+          <div class="island-book"><div class="book-cover"><span>✦</span><i>THE<br>WILD<br>PAGES</i></div><div class="book-pages"></div></div>
+          <div class="art-label">THE WILDERPAGES <span>✦</span></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Player stats">
+        <article class="stat-card purple"><div class="stat-icon">📚</div><div><span class="stat-label">BOOKS CAUGHT</span><strong id="caughtCount">0 <small>/ 50</small></strong><div class="mini-progress"><span id="caughtBar"></span></div></div></article>
+        <article class="stat-card yellow"><div class="stat-icon">🪙</div><div><span class="stat-label">PAGE COINS</span><strong id="coinCount">0</strong><p class="stat-note">Shiny little treasures</p></div></article>
+        <article class="stat-card mint"><div class="stat-icon">🧭</div><div><span class="stat-label">PLACES FOUND</span><strong id="placeCount">1 <small>/ 6</small></strong><p class="stat-note">Keep wandering!</p></div></article>
+      </section>
+
+      <section class="game-section" id="world">
+        <div class="section-heading"><div><p class="eyebrow">OPEN WORLD</p><h2>Wander the Wilderpages</h2></div><div class="world-legend"><span><i class="legend-dot book-dot"></i> Runaway book</span><span><i class="legend-dot player-dot"></i> You</span></div></div>
+        <div class="game-layout">
+          <div class="world-card">
+            <div class="world-topline"><div><span class="live-dot"></span> <b>THE MEADOWS</b><span class="weather">☀ Sunny · 21°C</span><span class="biome-pill" id="biomeName">🌼 Sunsprout Meadow</span></div><div class="coords" id="coords">X: 04 · Y: 03</div></div>
+            <div class="world-viewport" id="worldViewport">
+              <div class="world-map" id="worldMap"><div class="biome-zone zone-forest"><span>WHISPERWOOD</span></div><div class="biome-zone zone-pond"><span>MIRROR POND</span></div><div class="biome-zone zone-desert"><span>GOLDEN DUNES</span></div><div class="biome-zone zone-frost"><span>FROSTFALL</span></div><div class="biome-zone zone-mushroom"><span>GLOWCAP GROVE</span></div><div class="biome-zone zone-meadow"><span>SUNSPROUT</span></div>
+                <div class="terrain pond"></div><div class="terrain hill-one"></div><div class="terrain hill-two"></div>
+                <div class="path path-one"></div><div class="path path-two"></div><div class="path path-three"></div>
+                <div class="landmark tree-forest"><span>🌳</span><small>Whisperwood</small></div>
+                <div class="landmark cottage"><span>🏡</span><small>Story Cottage</small></div>
+                <div class="landmark fountain"><span>⛲</span><small>Wishwell</small></div>
+                <div class="landmark ruins"><span>🏛️</span><small>Old Chapter</small></div>
+                <div class="landmark flower-patch"><span>🌼 🌷</span></div>
+                <div class="landmark signpost"><span>🪧</span></div>
+                <div class="world-label label-meadow">SUNSPROUT MEADOW</div>
+                <div class="world-label label-pond">MIRROR POND</div>
+                <div id="bookLayer"></div>
+                <div id="player" class="player" aria-label="Your character"><span>🧙</span><i></i></div>
+              </div>
+              <div class="map-controls"><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomIn" aria-label="Zoom in">+</button><button id="centerBtn" aria-label="Center player">◎</button></div>
+              <div class="world-hint" id="worldHint">Tap a direction to wander. Get close to a book, then catch it!</div>
+            </div>
+            <div class="movement-pad" aria-label="Movement controls">
+              <button class="move-btn move-up" data-move="up" aria-label="Move up">▲</button>
+              <button class="move-btn move-left" data-move="left" aria-label="Move left">◀</button>
+              <button class="move-btn move-down" data-move="down" aria-label="Move down">▼</button>
+              <button class="move-btn move-right" data-move="right" aria-label="Move right">▶</button>
+              <span class="move-label">MOVE</span>
+              <button class="catch-btn" id="catchBtn">✦ Catch nearby book</button>
+            </div>
+          </div>
+          <aside class="side-panel">
+            <div class="panel-title"><div><span class="panel-icon">📖</span><h3>Field journal</h3></div><span class="tiny-badge">YOUR STORY</span></div>
+            <p class="panel-subtitle">50 books, five rarity tiers, and six biomes. Go see what you find.</p>
+            <div id="nearbyBook" class="nearby-book"><div class="book-emoji">📕</div><div><b>No book nearby… yet!</b><p>Explore the meadow to find one.</p></div></div>
+            <div class="collection-title"><h4>Your collection</h4><span id="collectionLabel">0 / 50</span></div>
+            <div class="collection-grid" id="collectionGrid"></div>
+            <div class="journal-footer"><span>✦</span><div><b>Little explorer tip</b><p>Different biomes hold different books. Legendary books are very rare!</p></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="discovery-section">
+        <div class="section-heading"><div><p class="eyebrow">BEYOND THE PATH</p><h2>Places waiting for you</h2></div><span class="discover-count" id="discoverText">1 discovered</span></div>
+        <div class="places-grid" id="placesGrid">
+          <article class="place-card discovered"><div class="place-art meadow-art">🌼<span>✦</span></div><div class="place-info"><span class="place-status">● DISCOVERED</span><h3>Sunsprout Meadow</h3><p>A sunny starting place where lost stories drift on the breeze.</p></div></article>
+          <article class="place-card locked" data-place="whisperwood"><div class="place-art forest-art">🌲<span>?</span></div><div class="place-info"><span class="place-status">◌ UNDISCOVERED</span><h3>Whisperwood</h3><p>Ancient trees keep secrets between their roots.</p></div></article>
+          <article class="place-card locked" data-place="mirrorpond"><div class="place-art pond-art">🪷<span>?</span></div><div class="place-info"><span class="place-status">◌ UNDISCOVERED</span><h3>Mirror Pond</h3><p>Something sparkles under the water's glassy surface.</p></div></article>
+          <article class="place-card locked" data-place="chapterruins"><div class="place-art ruins-art">🏛️<span>?</span></div><div class="place-info"><span class="place-status">◌ UNDISCOVERED</span><h3>Old Chapter</h3><p>Forgotten stories echo through the old stone arches.</p></div></article>
+          <article class="place-card locked" data-place="cottages"><div class="place-art cottage-art">🏡<span>?</span></div><div class="place-info"><span class="place-status">◌ UNDISCOVERED</span><h3>Story Cottage</h3><p>A cozy home for books that lost their way.</p></div></article>
+          <article class="place-card locked" data-place="starlight"><div class="place-art star-art">🌙<span>?</span></div><div class="place-info"><span class="place-status">◌ UNDISCOVERED</span><h3>Starlight Ridge</h3><p>A faraway ridge where the night sky comes alive.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer><a class="brand footer-brand" href="#"><span class="brand-mark">✦</span><span>bookbound<span class="brand-dot">.</span></span></a><span>A tiny world with very big stories.</span><span>Made for curious minds ✨</span></footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-icon" id="modalIcon">📚</div><p class="eyebrow">A NEW DISCOVERY</p><h2 id="modalTitle">You caught a book!</h2><p id="modalText">Every book holds a little wonder.</p><div class="modal-reward" id="modalReward">+5 page coins</div><button class="primary-btn" id="modalContinue">Back to exploring <span>→</span></button></div></div>
+  <script src="game.js"></script>
+</body>
+</html>
